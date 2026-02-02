@@ -1,0 +1,20 @@
+from pathlib import Path
+
+def total_salary(p):
+    s = 0
+    c = 0
+    try:
+        f = Path(p)
+        with f.open("r", encoding="utf-8") as r:
+            for l in r:
+                a, b = l.strip().split(",")
+                s += int(b)
+                c += 1
+      
+        if c == 0:
+            return (0, 0)
+        return (s, s // c)
+    except FileNotFoundError:
+        return (0, 0)
+    except ValueError:
+        return (0, 0)
